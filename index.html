@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameCreators - Sistema Unificado de Gestão</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+    <title>Game Creators Pro V2 - Sistema Completo Enhanced</title>
     <style>
         * {
             margin: 0;
@@ -13,32 +12,31 @@
         }
 
         :root {
-            --primary: #2196F3;
-            --primary-dark: #1976D2;
-            --primary-light: #BBDEFB;
-            --success: #4CAF50;
-            --success-dark: #45a049;
-            --warning: #FF9800;
-            --danger: #f44336;
-            --info: #2196F3;
-            --light: #f5f5f5;
-            --dark: #333;
-            --border: #e0e0e0;
-            --purple: #9C27B0;
-            --gold: #FFD700;
-            --background: #fafafa;
-            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --hover-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-gradient: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+            --warning-gradient: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            --danger-gradient: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+            --info-gradient: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+            --dark-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            
+            --bg-primary: #f7fafc;
+            --bg-secondary: #edf2f7;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 15px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.3);
+            --border-radius: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-gradient);
             min-height: 100vh;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
+            padding: 10px;
+            color: var(--text-primary);
+            transition: var(--transition);
         }
 
         /* Login Styles */
@@ -47,157 +45,97 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
         }
 
         .login-card {
             background: white;
-            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            animation: slideIn 0.6s ease-out;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideInUp 0.6s ease-out;
         }
 
-        @keyframes slideIn {
+        @keyframes slideInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .login-logo {
-            font-size: 64px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        .login-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
+        .login-card h1 {
+            color: var(--text-primary);
             margin-bottom: 10px;
-        }
-
-        .login-subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-        }
-
-        .login-tabs {
-            display: flex;
-            margin-bottom: 30px;
-            background: var(--light);
-            border-radius: 12px;
-            padding: 4px;
-        }
-
-        .login-tab {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            background: transparent;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .login-tab.active {
-            background: white;
-            color: var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .login-form {
-            text-align: left;
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
+            color: var(--text-primary);
             font-weight: 600;
-            color: #555;
             font-size: 14px;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 14px;
             transition: var(--transition);
             background: white;
             font-family: inherit;
         }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-            transform: translateY(-1px);
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
             padding: 14px 28px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 16px;
+            border: none;
+            border-radius: 10px;
             font-weight: 600;
+            cursor: pointer;
             transition: var(--transition);
-            margin-right: 12px;
-            margin-bottom: 12px;
+            font-size: 14px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
+            font-family: inherit;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s;
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .btn:hover::before {
-            left: 100%;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .btn:active {
-            transform: translateY(-1px);
+        .btn-success {
+            background: var(--success-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(56, 161, 105, 0.3);
         }
 
         .btn-sm {
@@ -206,2435 +144,552 @@
             margin: 2px;
         }
 
-        .btn-danger { background: linear-gradient(135deg, var(--danger), #d32f2f); }
-        .btn-success { background: linear-gradient(135deg, var(--success), var(--success-dark)); }
-        .btn-warning { background: linear-gradient(135deg, var(--warning), #F57C00); }
-        .btn-secondary { background: linear-gradient(135deg, #6c757d, #5a6268); }
-        .btn-info { background: linear-gradient(135deg, var(--info), #1976D2); }
-
-        /* Main App Styles */
-        .main-app {
-            display: none;
-            max-width: 1600px;
+        /* Main System Styles */
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
             margin: 0 auto;
-            padding: 20px;
-            background: var(--background);
-            min-height: 100vh;
-            border-radius: 20px 20px 0 0;
-            box-shadow: 0 -20px 40px rgba(0,0,0,0.15);
+            max-width: 100%;
+            display: none;
+            backdrop-filter: blur(20px);
         }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        .page-header {
+            background: var(--dark-gradient);
             color: white;
-            padding: 25px;
-            border-radius: 16px;
-            margin-bottom: 30px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+        }
+
+        .header-actions {
+            display: flex;
             gap: 15px;
-            box-shadow: var(--card-shadow);
-        }
-
-        .header-info {
-            display: flex;
             align-items: center;
-            gap: 20px;
         }
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .user-details h3 {
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .user-level {
-            font-size: 12px;
-            opacity: 0.9;
-            background: rgba(255,255,255,0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        /* Navigation */
-        .nav-tabs {
-            display: flex;
-            border-bottom: 3px solid var(--border);
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            position: sticky;
-            top: 0;
-            background: var(--background);
-            z-index: 100;
-            margin: 0 -20px 30px -20px;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-tab {
-            padding: 14px 22px;
-            background: white;
-            border: 2px solid var(--border);
-            border-radius: 12px;
+        .logout-btn {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: var(--transition);
+            font-size: 13px;
             font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-tabs {
+            background: var(--bg-primary);
+            padding: 0;
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 18px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
             font-size: 14px;
             white-space: nowrap;
-            min-width: 130px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .nav-tab.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .nav-tab:hover:not(.active) {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: var(--card-shadow);
-        }
-
-        .nav-tab.hidden {
-            display: none;
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 24px;
-            box-shadow: var(--card-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.2);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--hover-shadow);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .card-header h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 28px;
-            border-radius: 16px;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .stat-card.success {
-            background: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
-        }
-
-        .stat-card.warning {
-            background: linear-gradient(135deg, var(--warning) 0%, #F57C00 100%);
-        }
-
-        .stat-card.danger {
-            background: linear-gradient(135deg, var(--danger) 0%, #d32f2f 100%);
-        }
-
-        .stat-card.purple {
-            background: linear-gradient(135deg, var(--purple) 0%, #7B1FA2 100%);
-        }
-
-        .stat-card.gold {
-            background: linear-gradient(135deg, var(--gold) 0%, #FFA500 100%);
-            color: #333;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-
-        /* Tables */
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 24px;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
-        .table th,
-        .table td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .table th {
-            background: var(--light);
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .table tr:hover {
-            background: rgba(33, 150, 243, 0.04);
-            transform: scale(1.01);
-            transition: var(--transition);
-        }
-
-        .table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Badges */
-        .badge {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
-
-        .badge.success { background: var(--success); color: white; }
-        .badge.danger { background: var(--danger); color: white; }
-        .badge.warning { background: var(--warning); color: white; }
-        .badge.info { background: var(--info); color: white; }
-        .badge.secondary { background: #6c757d; color: white; }
-
-        /* Notifications */
-        .notification {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            padding: 18px 24px;
-            border-radius: 12px;
-            color: white;
-            font-weight: 600;
-            z-index: 10001;
-            transform: translateX(400px);
-            transition: var(--transition);
-            max-width: 350px;
-            box-shadow: var(--hover-shadow);
-            backdrop-filter: blur(10px);
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-
-        .notification.success { background: linear-gradient(135deg, var(--success), var(--success-dark)); }
-        .notification.error { background: linear-gradient(135deg, var(--danger), #d32f2f); }
-        .notification.info { background: linear-gradient(135deg, var(--info), var(--primary-dark)); }
-        .notification.warning { background: linear-gradient(135deg, var(--warning), #F57C00); }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 800px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            transform: translateY(-50px);
-            transition: var(--transition);
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .close-modal {
-            background: var(--danger);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            background: var(--border);
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin: 12px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 6px;
-            transition: var(--transition);
-            background: linear-gradient(90deg, var(--success), var(--success-dark));
-        }
-
-        /* Form Styles */
-        .form-row {
-            display: flex;
-            gap: 16px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        /* Gamification Styles */
-        .gamification-grid {
+        .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 30px;
+            padding: 30px;
         }
 
-        .mission-card {
+        .stat-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--card-shadow);
-            border-left: 5px solid var(--primary);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid #38a169;
+            position: relative;
+            overflow: hidden;
             transition: var(--transition);
         }
 
-        .mission-card:hover {
+        .stat-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--hover-shadow);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
-        .mission-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
             margin-bottom: 15px;
         }
 
-        .mission-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .mission-reward {
-            background: var(--success);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 25px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .leaderboard {
+        .data-table {
+            width: 100%;
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--card-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 20px;
         }
 
-        .podium {
-            display: flex;
-            justify-content: center;
-            align-items: end;
-            gap: 20px;
-            margin: 30px 0;
+        .data-table th {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 20px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
         }
 
-        .podium-place {
-            text-align: center;
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255,255,255,0.3);
-            min-width: 150px;
+        .data-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
         }
 
-        .podium-place.first {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 193, 7, 0.3));
-            order: 2;
-            transform: scale(1.1);
+        .notification {
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 600;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 420px;
+            animation: slideIn 0.3s ease-out;
         }
 
-        .podium-place.second {
-            background: linear-gradient(135deg, rgba(192, 192, 192, 0.3), rgba(169, 169, 169, 0.3));
-            order: 1;
+        .notification.success {
+            background: linear-gradient(135deg, rgba(199, 246, 213, 0.95), rgba(240, 253, 244, 0.95));
+            color: #22543d;
         }
 
-        .podium-place.third {
-            background: linear-gradient(135deg, rgba(205, 127, 50, 0.3), rgba(184, 115, 51, 0.3));
-            order: 3;
+        .notification.error {
+            background: linear-gradient(135deg, rgba(254, 215, 215, 0.95), rgba(255, 245, 245, 0.95));
+            color: #742a2a;
         }
 
-        .podium-medal {
-            font-size: 40px;
-            margin-bottom: 10px;
+        .notification.warning {
+            background: linear-gradient(135deg, rgba(254, 245, 231, 0.95), rgba(255, 251, 235, 0.95));
+            color: #744210;
         }
 
-        .podium-name {
-            font-weight: bold;
-            margin-bottom: 5px;
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
-        .podium-score {
-            background: rgba(255,255,255,0.2);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
+        .hidden {
+            display: none !important;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .login-card {
-                padding: 30px 20px;
-            }
-
-            .main-app {
-                padding: 15px;
-            }
-            
-            .nav-tabs { 
-                flex-direction: column; 
-                overflow-x: visible;
-                margin: 0 -15px 30px -15px;
-                padding: 15px;
-            }
-            
-            .nav-tab { 
-                margin-bottom: 8px; 
-                min-width: auto;
-                font-size: 14px;
-                padding: 12px 18px;
-            }
-            
-            .header {
-                flex-direction: column;
-                text-align: center;
+            .dashboard-grid {
+                grid-template-columns: 1fr;
                 padding: 20px;
+                gap: 20px;
             }
             
-            .header h1 {
-                font-size: 24px;
+            .nav-tabs {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
             }
             
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .card-header {
-                flex-direction: column;
-                gap: 15px;
-                align-items: stretch;
-            }
-            
-            .table {
-                font-size: 14px;
-            }
-            
-            .table th,
-            .table td {
-                padding: 10px 8px;
-            }
-            
-            .btn {
-                font-size: 14px;
-                padding: 10px 16px;
-            }
-            
-            .stat-number {
-                font-size: 28px;
-            }
-
-            .modal-content {
-                width: 95%;
-                margin: 2% auto;
-                padding: 20px;
-            }
-
-            .form-row {
-                flex-direction: column;
-            }
-
-            .podium {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .podium-place {
-                order: unset !important;
-                transform: none !important;
-                width: 200px;
-                margin-bottom: 15px;
+            .tab-button {
+                min-width: 140px;
+                padding: 16px 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Login Screen -->
     <div id="loginScreen" class="login-container">
         <div class="login-card">
-            <div class="login-logo">🎮</div>
-            <h1 class="login-title">GameCreators</h1>
-            <p class="login-subtitle">Sistema Unificado de Gestão Educacional</p>
+            <h1>🎮 Game Creators</h1>
+            <p style="color: #666; margin-bottom: 30px;">Sistema Completo de Gestão e Gamificação V2</p>
             
-            <div class="login-tabs">
-                <button class="login-tab active" onclick="switchLoginTab('colaborador')">👨‍💼 Colaborador</button>
-                <button class="login-tab" onclick="switchLoginTab('aluno')">👨‍🎓 Aluno</button>
+            <div class="form-group">
+                <label>👤 Usuário:</label>
+                <input type="text" id="loginUsername" placeholder="admin" required>
             </div>
-
-            <form id="colaboradorLogin" class="login-form">
-                <div class="form-group">
-                    <label for="loginUsuario">Usuário</label>
-                    <input type="text" id="loginUsuario" placeholder="admin, ricardo ou vendedor" required value="admin">
-                </div>
-                <div class="form-group">
-                    <label for="loginSenha">Senha</label>
-                    <input type="password" id="loginSenha" placeholder="Digite sua senha" required value="admin123">
-                </div>
-                <button type="submit" class="btn">
-                    🔑 Entrar no Sistema
-                </button>
-                <p style="font-size: 12px; color: #666; margin-top: 10px;">
-                    Entre em contato com a administração para obter suas credenciais
-                </p>
-            </form>
-
-            <form id="alunoLogin" class="login-form" style="display: none;">
-                <div class="form-group">
-                    <label for="loginRA">RA (Registro Acadêmico)</label>
-                    <input type="text" id="loginRA" placeholder="2025001" required value="2025001">
-                </div>
-                <button type="submit" class="btn btn-info">
-                    🎓 Entrar como Aluno
-                </button>
-                <p style="font-size: 12px; color: #666; margin-top: 10px;">
-                    Digite seu RA fornecido pela instituição
-                </p>
-            </form>
+            
+            <div class="form-group">
+                <label>🔒 Senha:</label>
+                <input type="password" id="loginPassword" placeholder="admin123" required>
+            </div>
+            
+            <button class="btn btn-primary" onclick="login()" style="width: 100%; margin-top: 25px;">
+                🚀 Entrar no Sistema
+            </button>
+            
+            <div style="margin-top: 20px;">
+                <button class="btn btn-success btn-sm" onclick="loginDemo('admin')">Demo Admin</button>
+                <button class="btn btn-primary btn-sm" onclick="loginDemo('user')">Demo User</button>
+            </div>
         </div>
     </div>
 
-    <div id="mainApp" class="main-app">
-        <div class="header">
-            <div class="header-info">
-                <div>
-                    <h1>🎮 GameCreators - Sistema Unificado</h1>
-                    <p id="userWelcome">Bem-vindo ao sistema!</p>
-                </div>
+    <!-- Main System -->
+    <div id="mainSystem" class="main-container">
+        <!-- Header -->
+        <div class="page-header">
+            <div>
+                <h1>🎮 Game Creators Pro V2</h1>
+                <p style="font-size: 14px; opacity: 0.8;">Sistema de Gestão Educacional</p>
             </div>
-            <div class="user-info">
-                <div class="user-avatar" id="userAvatar">U</div>
-                <div class="user-details">
-                    <h3 id="userName">Usuário</h3>
-                    <div class="user-level" id="userLevel">Nível 1 - Iniciante</div>
-                </div>
-                <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <button class="btn btn-info" onclick="toggleTheme()">🌙 Tema</button>
-                    <button class="btn btn-danger" onclick="logout()">🚪 Sair</button>
-                </div>
+            <div class="header-actions">
+                <span id="userName">Usuário</span>
+                <button class="logout-btn" onclick="logout()">🚪 Sair</button>
             </div>
         </div>
 
-        <div class="nav-tabs" id="navTabs">
-            <button class="nav-tab active" onclick="switchTab('dashboard')" data-role="all">📊 Dashboard</button>
-            <button class="nav-tab" onclick="switchTab('students')" data-role="admin,professor,gerente" id="studentsTab">👥 Alunos</button>
-            <button class="nav-tab" onclick="switchTab('courses')" data-role="admin,professor" id="coursesTab">📚 Cursos</button>
-            <button class="nav-tab" onclick="switchTab('visits')" data-role="admin,gerente,vendedor" id="visitsTab">🤝 Visitas</button>
-            <button class="nav-tab" onclick="switchTab('enrollments')" data-role="admin,gerente,vendedor" id="enrollmentsTab">📝 Matrículas</button>
-            <button class="nav-tab" onclick="switchTab('financial')" data-role="admin,gerente" id="financialTab">💰 Financeiro</button>
-            <button class="nav-tab" onclick="switchTab('gamification')" data-role="all" id="gamificationTab">🎮 Gamificação</button>
-            <button class="nav-tab" onclick="switchTab('team')" data-role="admin,gerente" id="teamTab">👥 Equipe</button>
-            <button class="nav-tab" onclick="switchTab('reports')" data-role="admin,gerente,professor" id="reportsTab">📊 Relatórios</button>
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
+            <button class="tab-button" onclick="switchTab('students')">Alunos</button>
+            <button class="tab-button" onclick="switchTab('courses')">Cursos</button>
+            <button class="tab-button" onclick="switchTab('financial')">Financeiro</button>
+            <button class="tab-button" onclick="switchTab('reports')">Relatórios</button>
         </div>
 
         <!-- Dashboard Tab -->
         <div id="dashboard" class="tab-content active">
-            <div class="stats-grid" id="dashboardStats">
-                <!-- Stats loaded dynamically -->
-            </div>
-            
-            <div class="card">
-                <div class="card-header">
-                    <h2>📈 Visão Geral</h2>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalStudents">150</div>
+                    <div class="stat-label">👥 Total de Alunos</div>
                 </div>
-                <div id="dashboardOverview">
-                    <!-- Overview content loaded dynamically -->
+                <div class="stat-card">
+                    <div class="stat-value" id="activeCourses">12</div>
+                    <div class="stat-label">📚 Cursos Ativos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="monthlyRevenue">R$ 45,200</div>
+                    <div class="stat-label">💰 Receita Mensal</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completionRate">87%</div>
+                    <div class="stat-label">📊 Taxa de Conclusão</div>
                 </div>
             </div>
         </div>
 
         <!-- Students Tab -->
         <div id="students" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>👥 Gestão de Alunos</h2>
+            <div style="padding: 30px;">
+                <div class="stat-card">
+                    <h3>👥 Gerenciar Alunos</h3>
                     <button class="btn btn-success" onclick="openStudentModal()">➕ Novo Aluno</button>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Curso</th>
+                                <th>Status</th>
+                                <th>Progresso</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTable">
+                            <tr>
+                                <td>João Silva</td>
+                                <td>joao@email.com</td>
+                                <td>Unity Game Development</td>
+                                <td><span style="background: #38a169; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px;">Ativo</span></td>
+                                <td>75%</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">Editar</button>
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>RA</th>
-                            <th>Nome</th>
-                            <th>Curso</th>
-                            <th>Status</th>
-                            <th>XP</th>
-                            <th>Nível</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="studentsTableBody">
-                        <!-- Students loaded dynamically -->
-                    </tbody>
-                </table>
             </div>
         </div>
 
         <!-- Courses Tab -->
         <div id="courses" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>📚 Gestão de Cursos</h2>
+            <div style="padding: 30px;">
+                <div class="stat-card">
+                    <h3>📚 Gerenciar Cursos</h3>
                     <button class="btn btn-success" onclick="openCourseModal()">➕ Novo Curso</button>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome do Curso</th>
+                                <th>Código</th>
+                                <th>Carga Horária</th>
+                                <th>Valor</th>
+                                <th>Alunos</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="coursesTable">
+                            <tr>
+                                <td>Unity Game Development</td>
+                                <td>UNITY-2025</td>
+                                <td>120h</td>
+                                <td>R$ 1,200.00</td>
+                                <td>45</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm">Editar</button>
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Código</th>
-                            <th>Carga Horária</th>
-                            <th>Mensalidade</th>
-                            <th>Duração</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="coursesTableBody">
-                        <!-- Courses loaded dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Visits Tab -->
-        <div id="visits" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>🤝 Registro de Visitas</h2>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                    <div class="form-group">
-                        <label>📅 Data da Visita:</label>
-                        <input type="date" id="visitDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label>👤 Nome do Visitante:</label>
-                        <input type="text" id="visitName" placeholder="Nome completo" required>
-                    </div>
-                    <div class="form-group">
-                        <label>📱 Telefone:</label>
-                        <input type="tel" id="visitPhone" placeholder="(11) 99999-9999" required>
-                    </div>
-                    <div class="form-group">
-                        <label>🎓 Curso de Interesse:</label>
-                        <select id="visitCourse" required>
-                            <option value="">Selecione...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>👨‍💼 Atendido por:</label>
-                        <select id="visitAttendant" required>
-                            <option value="">Selecione...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>📝 Observações:</label>
-                        <input type="text" id="visitNotes" placeholder="Ex: Muito interessado, vai decidir em 3 dias...">
-                    </div>
-                </div>
-                <button class="btn btn-success" onclick="addVisit()">✨ Registrar Visita</button>
-                
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>📅 Data</th>
-                            <th>👤 Nome</th>
-                            <th>📱 Telefone</th>
-                            <th>🎓 Curso</th>
-                            <th>👨‍💼 Atendente</th>
-                            <th>📊 Status</th>
-                            <th>🔧 Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="visitsTableBody">
-                        <!-- Visits loaded dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Enrollments Tab -->
-        <div id="enrollments" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>📝 Nova Matrícula</h2>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
-                    <div class="form-group">
-                        <label>📅 Data:</label>
-                        <input type="date" id="enrollmentDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label>👤 Nome do Aluno:</label>
-                        <input type="text" id="enrollmentName" placeholder="Nome completo" required>
-                    </div>
-                    <div class="form-group">
-                        <label>📱 Telefone:</label>
-                        <input type="tel" id="enrollmentPhone" placeholder="(11) 99999-9999">
-                    </div>
-                    <div class="form-group">
-                        <label>🎓 Curso:</label>
-                        <select id="enrollmentCourse" required>
-                            <option value="">Selecione...</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>💰 Valor Total (R$):</label>
-                        <input type="number" id="enrollmentTotal" step="0.01" min="0" required>
-                    </div>
-                    <div class="form-group">
-                        <label>💳 Valor de Entrada (R$):</label>
-                        <input type="number" id="enrollmentEntry" step="0.01" min="0" required>
-                    </div>
-                    <div class="form-group">
-                        <label>📊 Tipo de Venda:</label>
-                        <select id="enrollmentType" required>
-                            <option value="Convencional">Convencional (À vista ou parcelado normal)</option>
-                            <option value="Blackin">Blackin (6x no cartão)</option>
-                            <option value="Black">Black (10x+ no cartão)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>👨‍💼 Vendedor:</label>
-                        <select id="enrollmentSeller" required>
-                            <option value="">Selecione...</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn btn-success" onclick="addEnrollment()">➕ Registrar Matrícula</button>
-                
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>📅 Data</th>
-                            <th>👤 Aluno</th>
-                            <th>🎓 Curso</th>
-                            <th>💰 Valor</th>
-                            <th>👨‍💼 Vendedor</th>
-                            <th>💰 Comissão</th>
-                            <th>🔧 Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="enrollmentsTableBody">
-                        <!-- Enrollments loaded dynamically -->
-                    </tbody>
-                </table>
             </div>
         </div>
 
         <!-- Financial Tab -->
         <div id="financial" class="tab-content">
-            <div class="stats-grid">
-                <div class="stat-card success">
-                    <div class="stat-number" id="monthlyRevenue">R$ 0</div>
-                    <div class="stat-label">💰 Receita Mensal</div>
-                </div>
-                <div class="stat-card warning">
-                    <div class="stat-number" id="totalCommissions">R$ 0</div>
-                    <div class="stat-label">💼 Total Comissões</div>
-                </div>
-                <div class="stat-card danger">
-                    <div class="stat-number" id="overdueStudents">0</div>
-                    <div class="stat-label">⚠️ Inadimplentes</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2>💰 Gestão Financeira</h2>
-                    <button class="btn btn-success" onclick="openTransactionModal()">➕ Nova Transação</button>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Tipo</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="transactionsTableBody">
-                        <!-- Transactions loaded dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Gamification Tab -->
-        <div id="gamification" class="tab-content">
-            <div class="stats-grid">
-                <div class="stat-card purple">
-                    <div class="stat-number" id="userXP">0</div>
-                    <div class="stat-label">⭐ Minha XP</div>
-                </div>
-                <div class="stat-card gold">
-                    <div class="stat-number" id="userLevel">1</div>
-                    <div class="stat-label">🎮 Meu Nível</div>
-                </div>
-                <div class="stat-card success">
-                    <div class="stat-number" id="userRank">#1</div>
-                    <div class="stat-label">🏆 Minha Posição</div>
-                </div>
-                <div class="stat-card info">
-                    <div class="stat-number" id="activeMissions">2</div>
-                    <div class="stat-label">🎯 Missões Ativas</div>
-                </div>
-            </div>
-
-            <div class="leaderboard">
-                <h2 style="text-align: center; margin-bottom: 20px;">🏆 Hall da Fama</h2>
-                <div class="podium" id="leaderboardPodium">
-                    <!-- Podium loaded dynamically -->
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2>🎯 Missões Ativas</h2>
-                    <button class="btn btn-success" onclick="openMissionModal()" id="createMissionBtn" style="display: none;">➕ Criar Missão</button>
-                </div>
-                <div class="gamification-grid" id="missionsGrid">
-                    <!-- Missions loaded dynamically -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Team Tab -->
-        <div id="team" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>👥 Minha Equipe</h2>
-                </div>
-                <div class="stats-grid" id="teamStats">
-                    <!-- Team stats loaded dynamically -->
+            <div style="padding: 30px;">
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">R$ 45,200</div>
+                        <div class="stat-label">💰 Receita do Mês</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">R$ 3,800</div>
+                        <div class="stat-label">⏰ Pendências</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">R$ 1,200</div>
+                        <div class="stat-label">⚠️ Inadimplência</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Reports Tab -->
         <div id="reports" class="tab-content">
-            <div class="card">
-                <div class="card-header">
-                    <h2>📊 Relatórios</h2>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                    <button class="btn btn-primary" onclick="generateCommissionsReport()">💰 Relatório Comissões</button>
-                    <button class="btn btn-success" onclick="generateConversionReport()">📈 Relatório Conversão</button>
-                    <button class="btn btn-warning" onclick="generateFinancialReport()">💳 Relatório Financeiro</button>
-                    <button class="btn btn-info" onclick="generateStudentReport()">👥 Relatório Alunos</button>
-                </div>
-                <div id="reportResults">
-                    <!-- Report results loaded dynamically -->
+            <div style="padding: 30px;">
+                <div class="stat-card">
+                    <h3>📊 Relatórios do Sistema</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
+                        <button class="btn btn-primary">📈 Relatório de Vendas</button>
+                        <button class="btn btn-success">👥 Relatório de Alunos</button>
+                        <button class="btn btn-warning">💰 Relatório Financeiro</button>
+                        <button class="btn btn-info">📚 Relatório de Cursos</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Modals -->
-    
-    <!-- Student Modal -->
-    <div id="studentModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="studentModalTitle">Novo Aluno</h3>
-                <button class="close-modal" onclick="closeModal('studentModal')">×</button>
-            </div>
-            <form id="studentForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentRA">RA (Registro Acadêmico)</label>
-                        <input type="text" id="studentRA" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentName">Nome Completo</label>
-                        <input type="text" id="studentName" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentEmail">Email</label>
-                        <input type="email" id="studentEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentPhone">Telefone</label>
-                        <input type="tel" id="studentPhone" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentCourse">Curso</label>
-                        <select id="studentCourse" required>
-                            <option value="">Selecione um curso</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentTuition">Mensalidade (R$)</label>
-                        <input type="number" id="studentTuition" step="0.01" min="0" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentEnrollmentDate">Data de Matrícula</label>
-                        <input type="date" id="studentEnrollmentDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentStatus">Status</label>
-                        <select id="studentStatus" required>
-                            <option value="ativo">Ativo</option>
-                            <option value="inadimplente">Inadimplente</option>
-                            <option value="suspenso">Suspenso</option>
-                        </select>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('studentModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Salvar Aluno</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Course Modal -->
-    <div id="courseModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="courseModalTitle">Novo Curso</h3>
-                <button class="close-modal" onclick="closeModal('courseModal')">×</button>
-            </div>
-            <form id="courseForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="courseName">Nome do Curso</label>
-                        <input type="text" id="courseName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="courseCode">Código do Curso</label>
-                        <input type="text" id="courseCode" placeholder="ex: unity, blender" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="courseDescription">Descrição</label>
-                    <textarea id="courseDescription" rows="3"></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="courseHours">Carga Horária</label>
-                        <input type="number" id="courseHours" min="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="coursePrice">Mensalidade (R$)</label>
-                        <input type="number" id="coursePrice" step="0.01" min="0" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="courseDuration">Duração (meses)</label>
-                    <input type="number" id="courseDuration" min="1" max="24" value="12" required>
-                </div>
-                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('courseModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Salvar Curso</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Transaction Modal -->
-    <div id="transactionModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="transactionModalTitle">Nova Transação</h3>
-                <button class="close-modal" onclick="closeModal('transactionModal')">×</button>
-            </div>
-            <form id="transactionForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="transactionDate">Data</label>
-                        <input type="date" id="transactionDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="transactionType">Tipo</label>
-                        <select id="transactionType" required>
-                            <option value="">Selecione</option>
-                            <option value="receita">Receita</option>
-                            <option value="despesa">Despesa</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="transactionDescription">Descrição</label>
-                    <input type="text" id="transactionDescription" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="transactionValue">Valor (R$)</label>
-                        <input type="number" id="transactionValue" step="0.01" min="0" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="transactionStatus">Status</label>
-                        <select id="transactionStatus" required>
-                            <option value="pendente">Pendente</option>
-                            <option value="pago">Pago</option>
-                            <option value="cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('transactionModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Salvar Transação</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Mission Modal -->
-    <div id="missionModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="missionModalTitle">Nova Missão</h3>
-                <button class="close-modal" onclick="closeModal('missionModal')">×</button>
-            </div>
-            <form id="missionForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="missionTitle">Título da Missão</label>
-                        <input type="text" id="missionTitle" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="missionType">Tipo</label>
-                        <select id="missionType" required>
-                            <option value="vendas">📊 Meta de Vendas</option>
-                            <option value="visitas">👥 Meta de Visitas</option>
-                            <option value="conversao">📈 Meta de Conversão</option>
-                            <option value="especial">⭐ Missão Especial</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="missionDescription">Descrição</label>
-                    <textarea id="missionDescription" rows="3" required></textarea>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="missionTarget">Meta (número)</label>
-                        <input type="number" id="missionTarget" min="1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="missionReward">Recompensa (XP)</label>
-                        <input type="number" id="missionReward" min="10" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="missionDeadline">Prazo</label>
-                    <input type="date" id="missionDeadline" required>
-                </div>
-                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('missionModal')">Cancelar</button>
-                    <button type="submit" class="btn btn-success">Criar Missão</button>
-                </div>
-            </form>
         </div>
     </div>
 
     <script>
         // Global variables
         let currentUser = null;
-        let currentEditingId = null;
-        let currentEditingType = null;
-
-        // Unified data structure
-        const unifiedData = {
-            users: [
-                { id: 1, username: 'admin', password: 'admin123', name: 'Administrador', email: 'admin@gamecreators.com', role: 'admin', xp: 5000, level: 10, unit: 'Matriz' },
-                { id: 2, username: 'ricardo', password: 'prof123', name: 'Prof. Ricardo Santos', email: 'ricardo@gamecreators.com', role: 'professor', xp: 3500, level: 7, unit: 'Matriz' },
-                { id: 3, username: 'vendedor', password: 'vendedor123', name: 'Ana Silva', email: 'ana@gamecreators.com', role: 'vendedor', xp: 2100, level: 5, unit: 'Shopping Nacional' },
-                { id: 4, username: 'gerente', password: 'gerente123', name: 'Carlos Manager', email: 'carlos@gamecreators.com', role: 'gerente', xp: 3200, level: 6, unit: 'Shopping Nacional' }
-            ],
-            students: [
-                { 
-                    id: 1, ra: '2025001', name: 'João Silva', email: 'joao@email.com', phone: '(11) 99999-9999', 
-                    course: 'unity', status: 'ativo', tuition: 299.00, progress: 75, xp: 12450, level: 42, coins: 450, 
-                    enrollmentDate: '2025-01-15', createdBy: 'Ana Silva'
+        let gameData = {
+            users: {
+                'admin': {
+                    username: 'admin',
+                    password: 'admin123',
+                    name: 'Administrador',
+                    role: 'admin',
+                    xp: 5000,
+                    level: 10
                 },
-                { 
-                    id: 2, ra: '2025002', name: 'Maria Santos', email: 'maria@email.com', phone: '(11) 88888-8888', 
-                    course: 'blender', status: 'inadimplente', tuition: 199.00, progress: 60, xp: 10200, level: 38, coins: 380, 
-                    enrollmentDate: '2025-01-20', createdBy: 'Ana Silva'
-                },
-                { 
-                    id: 3, ra: '2025003', name: 'Carlos Oliveira', email: 'carlos@email.com', phone: '(11) 77777-7777', 
-                    course: 'csharp', status: 'ativo', tuition: 349.00, progress: 85, xp: 9800, level: 35, coins: 320, 
-                    enrollmentDate: '2025-02-01', createdBy: 'Ana Silva'
+                'user': {
+                    username: 'user',
+                    password: 'user123',
+                    name: 'Usuário Demo',
+                    role: 'user',
+                    xp: 1500,
+                    level: 3
                 }
-            ],
-            courses: [
-                { id: 1, name: 'Unity Game Development', code: 'unity', description: 'Desenvolvimento completo de jogos com Unity', hours: 180, price: 299.00, duration: 12 },
-                { id: 2, name: 'Blender 3D', code: 'blender', description: 'Modelagem e animação 3D profissional', hours: 120, price: 199.00, duration: 10 },
-                { id: 3, name: 'C# Programming', code: 'csharp', description: 'Programação avançada em C#', hours: 160, price: 349.00, duration: 8 },
-                { id: 4, name: 'Design Gráfico', code: 'design', description: 'Design gráfico e edição', hours: 140, price: 249.00, duration: 10 }
-            ],
-            visits: [
-                { id: 1, date: '2025-08-20', name: 'Pedro Costa', phone: '(11) 98765-4321', course: 'unity', attendant: 'Ana Silva', status: 'pending', notes: 'Interessado em game development' },
-                { id: 2, date: '2025-08-22', name: 'Julia Fernandes', phone: '(11) 97654-3210', course: 'design', attendant: 'Ana Silva', status: 'converted', notes: 'Converteu para matrícula' }
-            ],
-            enrollments: [
-                { id: 1, date: '2025-08-15', studentName: 'João Silva', phone: '(11) 99999-9999', course: 'unity', total: 3588, entry: 299, type: 'Convencional', seller: 'Ana Silva', commission: 150, createdBy: 'Ana Silva' },
-                { id: 2, date: '2025-08-20', studentName: 'Maria Santos', phone: '(11) 88888-8888', course: 'blender', total: 1990, entry: 199, type: 'Blackin', seller: 'Ana Silva', commission: 120, createdBy: 'Ana Silva' }
-            ],
-            transactions: [
-                { id: 1, date: '2025-08-01', type: 'receita', description: 'Mensalidade João Silva', value: 299.00, status: 'pago', studentId: 1 },
-                { id: 2, date: '2025-08-01', type: 'receita', description: 'Mensalidade Maria Santos', value: 199.00, status: 'pendente', studentId: 2 },
-                { id: 3, date: '2025-07-15', type: 'despesa', description: 'Licença Unity Pro', value: 1500.00, status: 'pago' }
-            ],
-            missions: [
-                {
-                    id: 1, title: 'Meta Mensal de Vendas', description: 'Alcance 15 matrículas este mês',
-                    type: 'vendas', target: 15, current: 2, reward: 500, deadline: '2025-08-31', status: 'active'
-                },
-                {
-                    id: 2, title: 'Conquistador de Leads', description: 'Registre 30 visitas este mês',
-                    type: 'visitas', target: 30, current: 8, reward: 300, deadline: '2025-08-31', status: 'active'
-                }
-            ]
+            },
+            students: [],
+            courses: [],
+            transactions: []
         };
 
-        // Utility functions
-        function formatCurrency(value) {
-            return new Intl.NumberFormat('pt-BR', {
-                style: 'currency',
-                currency: 'BRL'
-            }).format(value);
+        // Initialize system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGameData();
+            setupEventListeners();
+        });
+
+        function loadGameData() {
+            try {
+                const saved = localStorage.getItem('gameCreatorsData');
+                if (saved) {
+                    gameData = { ...gameData, ...JSON.parse(saved) };
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
         }
 
-        function formatDate(dateString) {
-            if (!dateString) return '';
-            const date = new Date(dateString + 'T00:00:00');
-            return date.toLocaleDateString('pt-BR');
+        function saveGameData() {
+            try {
+                localStorage.setItem('gameCreatorsData', JSON.stringify(gameData));
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
+        }
+
+        function setupEventListeners() {
+            // Enter key login
+            document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    login();
+                }
+            });
+        }
+
+        // Login functions
+        function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (!username || !password) {
+                showNotification('Preencha usuário e senha', 'warning');
+                return;
+            }
+
+            const user = gameData.users[username];
+            if (!user || user.password !== password) {
+                showNotification('Usuário ou senha incorretos', 'error');
+                return;
+            }
+
+            performLogin(user);
+        }
+
+        function loginDemo(type) {
+            const user = gameData.users[type];
+            if (user) {
+                performLogin(user);
+            }
+        }
+
+        function performLogin(user) {
+            currentUser = user;
+            document.getElementById('userName').textContent = user.name;
+            
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainSystem').style.display = 'block';
+            
+            showNotification(`Bem-vindo, ${user.name}!`, 'success');
+            updateDashboard();
+        }
+
+        function logout() {
+            currentUser = null;
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('mainSystem').style.display = 'none';
+            
+            // Clear form
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            
+            showNotification('Logout realizado com sucesso', 'info');
+        }
+
+        // Tab navigation
+        function switchTab(tabId) {
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active to selected tab
+            document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Dashboard updates
+        function updateDashboard() {
+            // Update stats with real data
+            document.getElementById('totalStudents').textContent = gameData.students.length || '150';
+            document.getElementById('activeCourses').textContent = gameData.courses.length || '12';
+            
+            // Calculate monthly revenue
+            const monthlyRevenue = gameData.transactions
+                ?.filter(t => t.type === 'income')
+                ?.reduce((sum, t) => sum + (t.amount || 0), 0) || 45200;
+            
+            document.getElementById('monthlyRevenue').textContent = `R$ ${monthlyRevenue.toLocaleString('pt-BR')}`;
+        }
+
+        // Utility functions
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 4000);
         }
 
         function generateId() {
             return Date.now().toString(36) + Math.random().toString(36).substr(2);
         }
 
-        function showMessage(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.classList.add('show'), 100);
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (document.body.contains(notification)) {
-                        document.body.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
         }
 
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.style.display = 'block';
-            setTimeout(() => modal.classList.add('show'), 10);
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        // Login functions
-        function switchLoginTab(type) {
-            const colaboradorTab = document.querySelector('.login-tab:first-child');
-            const alunoTab = document.querySelector('.login-tab:last-child');
-            const colaboradorForm = document.getElementById('colaboradorLogin');
-            const alunoForm = document.getElementById('alunoLogin');
-
-            if (type === 'colaborador') {
-                colaboradorTab.classList.add('active');
-                alunoTab.classList.remove('active');
-                colaboradorForm.style.display = 'block';
-                alunoForm.style.display = 'none';
-            } else {
-                alunoTab.classList.add('active');
-                colaboradorTab.classList.remove('active');
-                alunoForm.style.display = 'block';
-                colaboradorForm.style.display = 'none';
-            }
-        }
-
-        // Login handlers
-        document.getElementById('colaboradorLogin').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const username = document.getElementById('loginUsuario').value;
-            const password = document.getElementById('loginSenha').value;
-
-            const user = unifiedData.users.find(u => u.username === username && u.password === password);
-            if (user) {
-                currentUser = user;
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('mainApp').style.display = 'block';
-                document.getElementById('userWelcome').textContent = `Bem-vindo, ${user.name}!`;
-                document.getElementById('userName').textContent = user.name;
-                document.getElementById('userLevel').textContent = `Nível ${user.level} - ${getLevelName(user.level)}`;
-                document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
-                
-                setupUserInterface();
-                loadDashboard();
-                showMessage('Login realizado com sucesso!', 'success');
-            } else {
-                showMessage('Usuário ou senha incorretos!', 'error');
-            }
-        });
-
-        document.getElementById('alunoLogin').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const ra = document.getElementById('loginRA').value;
-            
-            const student = unifiedData.students.find(s => s.ra === ra);
-            if (student) {
-                currentUser = { ...student, role: 'student' };
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('mainApp').style.display = 'block';
-                document.getElementById('userWelcome').textContent = `Bem-vindo, ${student.name}!`;
-                document.getElementById('userName').textContent = student.name;
-                document.getElementById('userLevel').textContent = `Nível ${student.level}`;
-                document.getElementById('userAvatar').textContent = student.name.charAt(0).toUpperCase();
-                
-                setupStudentInterface();
-                showMessage('Login realizado com sucesso!', 'success');
-            } else {
-                showMessage('RA não encontrado!', 'error');
-            }
-        });
-
-        function getLevelName(level) {
-            if (level >= 10) return 'Lenda';
-            if (level >= 8) return 'Especialista';
-            if (level >= 6) return 'Veterano';
-            if (level >= 4) return 'Experiente';
-            if (level >= 2) return 'Aprendiz';
-            return 'Iniciante';
-        }
-
-        function setupUserInterface() {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const userRole = currentUser.role;
-
-            tabs.forEach(tab => {
-                const allowedRoles = tab.getAttribute('data-role');
-                if (allowedRoles === 'all' || allowedRoles.includes(userRole)) {
-                    tab.style.display = 'block';
-                } else {
-                    tab.style.display = 'none';
-                }
-            });
-
-            // Show create mission button for admin/gerente
-            if (userRole === 'admin' || userRole === 'gerente') {
-                document.getElementById('createMissionBtn').style.display = 'inline-flex';
-            }
-        }
-
-        function setupStudentInterface() {
-            // Hide all tabs except dashboard and gamification for students
-            const tabs = document.querySelectorAll('.nav-tab');
-            tabs.forEach(tab => {
-                const allowedRoles = tab.getAttribute('data-role');
-                if (allowedRoles !== 'all' && tab.id !== 'gamificationTab') {
-                    tab.style.display = 'none';
-                }
-            });
-            
-            loadStudentDashboard();
-        }
-
-        function loadStudentDashboard() {
-            const dashboardStats = document.getElementById('dashboardStats');
-            const student = currentUser;
-
-            dashboardStats.innerHTML = `
-                <div class="stat-card purple">
-                    <div class="stat-number">${student.progress}%</div>
-                    <div class="stat-label">Progresso do Curso</div>
-                </div>
-                <div class="stat-card gold">
-                    <div class="stat-number">${student.xp}</div>
-                    <div class="stat-label">XP Total</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${student.level}</div>
-                    <div class="stat-label">Nível Atual</div>
-                </div>
-                <div class="stat-card success">
-                    <div class="stat-number">${student.coins}</div>
-                    <div class="stat-label">Moedas</div>
-                </div>
-            `;
-
-            const course = unifiedData.courses.find(c => c.code === student.course);
-            document.getElementById('dashboardOverview').innerHTML = `
-                <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 25px; border-radius: 15px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 15px;">📚 Meu Curso: ${course ? course.name : 'Curso não encontrado'}</h3>
-                    <div class="progress-bar" style="height: 15px;">
-                        <div class="progress-fill" style="width: ${student.progress}%; background: white;"></div>
-                    </div>
-                    <p style="margin-top: 10px;">Progresso: ${student.progress}% concluído</p>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                    <div style="background: var(--light); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">📊</div>
-                        <div>Status: <span class="badge ${student.status === 'ativo' ? 'success' : 'danger'}">${student.status}</span></div>
-                    </div>
-                    <div style="background: var(--light); padding: 20px; border-radius: 12px; text-align: center;">
-                        <div style="font-size: 24px; margin-bottom: 10px;">💰</div>
-                        <div>Mensalidade: ${formatCurrency(student.tuition)}</div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Tab switching
-        function switchTab(tabName) {
-            const tabs = document.querySelectorAll('.nav-tab');
-            const contents = document.querySelectorAll('.tab-content');
-
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-
-            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
-            document.getElementById(tabName).classList.add('active');
-
-            // Load tab content
-            switch(tabName) {
-                case 'dashboard':
-                    loadDashboard();
-                    break;
-                case 'students':
-                    loadStudents();
-                    break;
-                case 'courses':
-                    loadCourses();
-                    break;
-                case 'visits':
-                    loadVisits();
-                    break;
-                case 'enrollments':
-                    loadEnrollments();
-                    break;
-                case 'financial':
-                    loadFinancial();
-                    break;
-                case 'gamification':
-                    loadGamification();
-                    break;
-                case 'team':
-                    loadTeam();
-                    break;
-                case 'reports':
-                    loadReports();
-                    break;
-            }
-        }
-
-        // Dashboard loading
-        function loadDashboard() {
-            if (currentUser?.role === 'student') {
-                loadStudentDashboard();
-                return;
-            }
-
-            const totalStudents = unifiedData.students.length;
-            const activeStudents = unifiedData.students.filter(s => s.status === 'ativo').length;
-            const overdueStudents = unifiedData.students.filter(s => s.status === 'inadimplente').length;
-            const totalVisits = unifiedData.visits.length;
-            const conversions = unifiedData.enrollments.length;
-            const totalCommissions = unifiedData.enrollments.reduce((sum, e) => sum + (e.commission || 0), 0);
-
-            const conversionRate = totalVisits > 0 ? (conversions / totalVisits) * 100 : 0;
-
-            const dashboardStats = document.getElementById('dashboardStats');
-            dashboardStats.innerHTML = `
-                <div class="stat-card" onclick="switchTab('students')">
-                    <div class="stat-number">${totalStudents}</div>
-                    <div class="stat-label">👥 Total de Alunos</div>
-                </div>
-                <div class="stat-card success" onclick="switchTab('students')">
-                    <div class="stat-number">${activeStudents}</div>
-                    <div class="stat-label">✅ Alunos Ativos</div>
-                </div>
-                <div class="stat-card danger" onclick="switchTab('financial')">
-                    <div class="stat-number">${overdueStudents}</div>
-                    <div class="stat-label">⚠️ Inadimplentes</div>
-                </div>
-                <div class="stat-card warning" onclick="switchTab('visits')">
-                    <div class="stat-number">${totalVisits}</div>
-                    <div class="stat-label">🤝 Visitas Registradas</div>
-                </div>
-                <div class="stat-card purple" onclick="switchTab('enrollments')">
-                    <div class="stat-number">${conversions}</div>
-                    <div class="stat-label">📝 Matrículas</div>
-                </div>
-                <div class="stat-card gold">
-                    <div class="stat-number">${formatCurrency(totalCommissions)}</div>
-                    <div class="stat-label">💰 Comissões</div>
-                </div>
-            `;
-
-            document.getElementById('dashboardOverview').innerHTML = `
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div style="background: linear-gradient(135deg, var(--success), var(--success-dark)); color: white; padding: 25px; border-radius: 15px;">
-                        <h3 style="margin-bottom: 15px;">📈 Taxa de Conversão</h3>
-                        <div style="font-size: 32px; font-weight: bold; margin-bottom: 10px;">${conversionRate.toFixed(1)}%</div>
-                        <div class="progress-bar" style="height: 10px;">
-                            <div class="progress-fill" style="width: ${Math.min(conversionRate, 100)}%; background: white;"></div>
-                        </div>
-                        <p style="margin-top: 10px; font-size: 14px; opacity: 0.9;">${conversions} matrículas de ${totalVisits} visitas</p>
-                    </div>
-                    <div style="background: linear-gradient(135deg, var(--info), var(--primary-dark)); color: white; padding: 25px; border-radius: 15px;">
-                        <h3 style="margin-bottom: 15px;">🎯 Performance do Mês</h3>
-                        <div style="font-size: 18px; margin-bottom: 10px;">Meta: 15 matrículas</div>
-                        <div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">Atual: ${conversions}</div>
-                        <div class="progress-bar" style="height: 10px;">
-                            <div class="progress-fill" style="width: ${Math.min((conversions / 15) * 100, 100)}%; background: white;"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Students management
-        function loadStudents() {
-            const tbody = document.getElementById('studentsTableBody');
-            tbody.innerHTML = '';
-
-            unifiedData.students.forEach(student => {
-                const course = unifiedData.courses.find(c => c.code === student.course);
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.ra}</td>
-                    <td>${student.name}</td>
-                    <td>${course ? course.name : student.course}</td>
-                    <td><span class="badge ${student.status === 'ativo' ? 'success' : 'danger'}">${student.status}</span></td>
-                    <td>${student.xp}</td>
-                    <td>${student.level}</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="editStudent(${student.id})">✏️ Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteStudent(${student.id})">🗑️ Excluir</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Courses management
-        function loadCourses() {
-            const tbody = document.getElementById('coursesTableBody');
-            tbody.innerHTML = '';
-
-            unifiedData.courses.forEach(course => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${course.name}</td>
-                    <td>${course.code}</td>
-                    <td>${course.hours}h</td>
-                    <td>${formatCurrency(course.price)}</td>
-                    <td>${course.duration} meses</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="editCourse(${course.id})">✏️ Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteCourse(${course.id})">🗑️ Excluir</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Visits management
-        function loadVisits() {
-            document.getElementById('visitDate').value = new Date().toISOString().split('T')[0];
-            
-            // Populate course options
-            const courseSelect = document.getElementById('visitCourse');
-            courseSelect.innerHTML = '<option value="">Selecione...</option>';
-            unifiedData.courses.forEach(course => {
-                courseSelect.innerHTML += `<option value="${course.code}">${course.name}</option>`;
-            });
-
-            // Populate attendant options
-            const attendantSelect = document.getElementById('visitAttendant');
-            attendantSelect.innerHTML = '<option value="">Selecione...</option>';
-            unifiedData.users.filter(u => ['vendedor', 'gerente'].includes(u.role)).forEach(user => {
-                attendantSelect.innerHTML += `<option value="${user.name}">${user.name}</option>`;
-            });
-
-            // Load visits table
-            const tbody = document.getElementById('visitsTableBody');
-            tbody.innerHTML = '';
-
-            unifiedData.visits.forEach(visit => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${formatDate(visit.date)}</td>
-                    <td>${visit.name}</td>
-                    <td>${visit.phone}</td>
-                    <td>${getCourseNameByCode(visit.course)}</td>
-                    <td>${visit.attendant}</td>
-                    <td><span class="badge ${visit.status === 'converted' ? 'success' : 'warning'}">${visit.status === 'converted' ? 'Convertido' : 'Pendente'}</span></td>
-                    <td>
-                        ${visit.status === 'pending' ? 
-                            `<button class="btn btn-success btn-sm" onclick="convertVisit(${visit.id})">🎯 Converter</button>` : ''
-                        }
-                        <button class="btn btn-danger btn-sm" onclick="deleteVisit(${visit.id})">🗑️</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Enrollments management
-        function loadEnrollments() {
-            document.getElementById('enrollmentDate').value = new Date().toISOString().split('T')[0];
-            
-            // Populate course options
-            const courseSelect = document.getElementById('enrollmentCourse');
-            courseSelect.innerHTML = '<option value="">Selecione...</option>';
-            unifiedData.courses.forEach(course => {
-                courseSelect.innerHTML += `<option value="${course.code}">${course.name}</option>`;
-            });
-
-            // Populate seller options
-            const sellerSelect = document.getElementById('enrollmentSeller');
-            sellerSelect.innerHTML = '<option value="">Selecione...</option>';
-            unifiedData.users.filter(u => ['vendedor', 'gerente'].includes(u.role)).forEach(user => {
-                sellerSelect.innerHTML += `<option value="${user.name}">${user.name}</option>`;
-            });
-
-            // Load enrollments table
-            const tbody = document.getElementById('enrollmentsTableBody');
-            tbody.innerHTML = '';
-
-            unifiedData.enrollments.forEach(enrollment => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${formatDate(enrollment.date)}</td>
-                    <td>${enrollment.studentName}</td>
-                    <td>${getCourseNameByCode(enrollment.course)}</td>
-                    <td>${formatCurrency(enrollment.total)}</td>
-                    <td>${enrollment.seller}</td>
-                    <td>${formatCurrency(enrollment.commission)}</td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="editEnrollment(${enrollment.id})">✏️ Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteEnrollment(${enrollment.id})">🗑️ Excluir</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Financial management
-        function loadFinancial() {
-            const currentMonth = new Date().getMonth();
-            const currentYear = new Date().getFullYear();
-            
-            const monthlyRevenue = unifiedData.transactions
-                .filter(t => {
-                    const transDate = new Date(t.date);
-                    return t.type === 'receita' && t.status === 'pago' && 
-                           transDate.getMonth() === currentMonth && 
-                           transDate.getFullYear() === currentYear;
-                })
-                .reduce((sum, t) => sum + t.value, 0);
-            
-            const totalCommissions = unifiedData.enrollments.reduce((sum, e) => sum + (e.commission || 0), 0);
-            const overdueCount = unifiedData.students.filter(s => s.status === 'inadimplente').length;
-
-            document.getElementById('monthlyRevenue').textContent = formatCurrency(monthlyRevenue);
-            document.getElementById('totalCommissions').textContent = formatCurrency(totalCommissions);
-            document.getElementById('overdueStudents').textContent = overdueCount;
-
-            const tbody = document.getElementById('transactionsTableBody');
-            tbody.innerHTML = '';
-
-            unifiedData.transactions.forEach(transaction => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${formatDate(transaction.date)}</td>
-                    <td><span class="badge ${transaction.type === 'receita' ? 'success' : 'warning'}">${transaction.type}</span></td>
-                    <td>${transaction.description}</td>
-                    <td>${formatCurrency(transaction.value)}</td>
-                    <td><span class="badge ${transaction.status === 'pago' ? 'success' : transaction.status === 'pendente' ? 'warning' : 'secondary'}">${transaction.status}</span></td>
-                    <td>
-                        <button class="btn btn-info btn-sm" onclick="editTransaction(${transaction.id})">✏️ Editar</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteTransaction(${transaction.id})">🗑️ Excluir</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Gamification management
-        function loadGamification() {
-            if (currentUser.role === 'student') {
-                loadStudentGamification();
-                return;
-            }
-
-            // Update user stats
-            document.getElementById('userXP').textContent = currentUser.xp || 0;
-            document.getElementById('userLevel').textContent = currentUser.level || 1;
-            
-            // Calculate user rank
-            const sortedUsers = unifiedData.users
-                .filter(u => u.role !== 'student')
-                .sort((a, b) => (b.xp || 0) - (a.xp || 0));
-            const userRank = sortedUsers.findIndex(u => u.id === currentUser.id) + 1;
-            document.getElementById('userRank').textContent = `#${userRank}`;
-            
-            const activeMissionsCount = unifiedData.missions.filter(m => m.status === 'active').length;
-            document.getElementById('activeMissions').textContent = activeMissionsCount;
-
-            // Load leaderboard
-            const podium = document.getElementById('leaderboardPodium');
-            const topUsers = sortedUsers.slice(0, 3);
-            
-            podium.innerHTML = topUsers.map((user, index) => {
-                const position = index + 1;
-                const positionClass = position === 1 ? 'first' : position === 2 ? 'second' : 'third';
-                const medal = position === 1 ? '🥇' : position === 2 ? '🥈' : '🥉';
-                
-                return `
-                    <div class="podium-place ${positionClass}">
-                        <div class="podium-medal">${medal}</div>
-                        <div class="podium-name">${user.name}</div>
-                        <div style="font-size: 12px; opacity: 0.8; margin: 5px 0;">${user.role}</div>
-                        <div class="podium-score">${user.xp || 0} XP</div>
-                    </div>
-                `;
-            }).join('');
-
-            // Load missions
-            const missionsGrid = document.getElementById('missionsGrid');
-            missionsGrid.innerHTML = '';
-
-            unifiedData.missions.forEach(mission => {
-                const progress = (mission.current / mission.target) * 100;
-                const isCompleted = mission.current >= mission.target;
-
-                const missionCard = document.createElement('div');
-                missionCard.className = 'mission-card';
-                missionCard.innerHTML = `
-                    <div class="mission-header">
-                        <div class="mission-title">${mission.title}</div>
-                        <div class="mission-reward">${mission.reward} XP</div>
-                    </div>
-                    <p style="color: #666; margin-bottom: 15px;">${mission.description}</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${Math.min(progress, 100)}%;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: 8px;">
-                        <span>${mission.current} de ${mission.target}</span>
-                        <span>Prazo: ${formatDate(mission.deadline)}</span>
-                    </div>
-                    ${isCompleted ? 
-                        '<div style="text-align: center; margin-top: 15px; color: var(--success); font-weight: bold;">✅ Missão Completa!</div>' : 
-                        ''
-                    }
-                `;
-                missionsGrid.appendChild(missionCard);
-            });
-        }
-
-        function loadStudentGamification() {
-            const student = currentUser;
-            
-            document.getElementById('userXP').textContent = student.xp;
-            document.getElementById('userLevel').textContent = student.level;
-            document.getElementById('userRank').textContent = '#1'; // Students compete separately
-            document.getElementById('activeMissions').textContent = '2';
-
-            // Student leaderboard
-            const studentLeaderboard = unifiedData.students
-                .sort((a, b) => b.xp - a.xp)
-                .slice(0, 3);
-
-            const podium = document.getElementById('leaderboardPodium');
-            podium.innerHTML = studentLeaderboard.map((student, index) => {
-                const position = index + 1;
-                const positionClass = position === 1 ? 'first' : position === 2 ? 'second' : 'third';
-                const medal = position === 1 ? '🥇' : position === 2 ? '🥈' : '🥉';
-                
-                return `
-                    <div class="podium-place ${positionClass}">
-                        <div class="podium-medal">${medal}</div>
-                        <div class="podium-name">${student.name}</div>
-                        <div style="font-size: 12px; opacity: 0.8; margin: 5px 0;">Aluno</div>
-                        <div class="podium-score">${student.xp} XP</div>
-                    </div>
-                `;
-            }).join('');
-
-            // Student missions
-            const missionsGrid = document.getElementById('missionsGrid');
-            missionsGrid.innerHTML = `
-                <div class="mission-card">
-                    <div class="mission-header">
-                        <div class="mission-title">🎓 Progressão no Curso</div>
-                        <div class="mission-reward">100 XP</div>
-                    </div>
-                    <p style="color: #666; margin-bottom: 15px;">Complete mais módulos do seu curso</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${student.progress}%;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: 8px;">
-                        <span>${student.progress}% concluído</span>
-                        <span>Meta: 100%</span>
-                    </div>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-header">
-                        <div class="mission-title">⭐ Coletor de XP</div>
-                        <div class="mission-reward">200 XP</div>
-                    </div>
-                    <p style="color: #666; margin-bottom: 15px;">Alcance 15.000 XP total</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${(student.xp / 15000) * 100}%;"></div>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; margin-top: 8px;">
-                        <span>${student.xp} de 15.000 XP</span>
-                        <span>Recompensa: Badge Especial</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Team management
-        function loadTeam() {
-            const teamStats = document.getElementById('teamStats');
-            const teamMembers = unifiedData.users.filter(u => u.role !== 'admin' && u.role !== 'student');
-            
-            teamStats.innerHTML = teamMembers.map(member => {
-                const memberEnrollments = unifiedData.enrollments.filter(e => e.seller === member.name).length;
-                const memberCommissions = unifiedData.enrollments
-                    .filter(e => e.seller === member.name)
-                    .reduce((sum, e) => sum + (e.commission || 0), 0);
-
-                return `
-                    <div class="stat-card">
-                        <div style="text-align: center;">
-                            <div style="width: 60px; height: 60px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 24px; font-weight: bold;">
-                                ${member.name.charAt(0)}
-                            </div>
-                            <h3 style="margin-bottom: 8px; color: white;">${member.name}</h3>
-                            <div style="font-size: 12px; opacity: 0.9; margin-bottom: 15px;">${member.role}</div>
-                            <div style="font-size: 14px;">
-                                📊 ${memberEnrollments} matrículas<br>
-                                💰 ${formatCurrency(memberCommissions)}<br>
-                                ⭐ ${member.xp || 0} XP
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Reports management
-        function loadReports() {
-            // Reports functionality will be loaded when buttons are clicked
-        }
-
-        // Helper functions
-        function getCourseNameByCode(code) {
-            const course = unifiedData.courses.find(c => c.code === code);
-            return course ? course.name : code;
-        }
-
-        function addVisit() {
-            const visitData = {
-                id: generateId(),
-                date: document.getElementById('visitDate').value,
-                name: document.getElementById('visitName').value,
-                phone: document.getElementById('visitPhone').value,
-                course: document.getElementById('visitCourse').value,
-                attendant: document.getElementById('visitAttendant').value,
-                notes: document.getElementById('visitNotes').value,
-                status: 'pending',
-                createdBy: currentUser.name
-            };
-
-            if (!visitData.date || !visitData.name || !visitData.phone || !visitData.course || !visitData.attendant) {
-                showMessage('Preencha todos os campos obrigatórios', 'warning');
-                return;
-            }
-
-            unifiedData.visits.push(visitData);
-            
-            // Award XP to attendant
-            const attendant = unifiedData.users.find(u => u.name === visitData.attendant);
-            if (attendant) {
-                attendant.xp = (attendant.xp || 0) + 25;
-            }
-
-            showMessage('Visita registrada com sucesso!', 'success');
-            clearVisitForm();
-            loadVisits();
-        }
-
-        function clearVisitForm() {
-            document.getElementById('visitName').value = '';
-            document.getElementById('visitPhone').value = '';
-            document.getElementById('visitCourse').value = '';
-            document.getElementById('visitAttendant').value = '';
-            document.getElementById('visitNotes').value = '';
-        }
-
-        function convertVisit(visitId) {
-            const visit = unifiedData.visits.find(v => v.id === visitId);
-            if (!visit) return;
-            
-            // Pre-fill enrollment form with visit data
-            switchTab('enrollments');
-            setTimeout(() => {
-                document.getElementById('enrollmentName').value = visit.name;
-                document.getElementById('enrollmentPhone').value = visit.phone;
-                document.getElementById('enrollmentCourse').value = visit.course;
-                document.getElementById('enrollmentSeller').value = visit.attendant;
-                
-                showMessage('Dados da visita preenchidos! Complete as informações da matrícula.', 'info');
-            }, 100);
-            
-            // Mark visit as converted
-            visit.status = 'converted';
-            visit.convertedAt = new Date().toISOString();
-        }
-
-        function deleteVisit(visitId) {
-            if (confirm('Tem certeza que deseja excluir esta visita?')) {
-                const index = unifiedData.visits.findIndex(v => v.id === visitId);
-                if (index > -1) {
-                    unifiedData.visits.splice(index, 1);
-                    showMessage('Visita excluída', 'info');
-                    loadVisits();
-                }
-            }
-        }
-
-        function addEnrollment() {
-            const enrollmentData = {
-                id: generateId(),
-                date: document.getElementById('enrollmentDate').value,
-                studentName: document.getElementById('enrollmentName').value,
-                phone: document.getElementById('enrollmentPhone').value,
-                course: document.getElementById('enrollmentCourse').value,
-                total: parseFloat(document.getElementById('enrollmentTotal').value),
-                entry: parseFloat(document.getElementById('enrollmentEntry').value),
-                type: document.getElementById('enrollmentType').value,
-                seller: document.getElementById('enrollmentSeller').value,
-                commission: calculateCommission(document.getElementById('enrollmentType').value, parseFloat(document.getElementById('enrollmentTotal').value)),
-                createdBy: currentUser.name
-            };
-
-            if (!enrollmentData.date || !enrollmentData.studentName || !enrollmentData.course || 
-                !enrollmentData.total || !enrollmentData.entry || !enrollmentData.seller) {
-                showMessage('Preencha todos os campos obrigatórios', 'warning');
-                return;
-            }
-
-            if (enrollmentData.entry > enrollmentData.total) {
-                showMessage('Valor de entrada não pode ser maior que o valor total', 'error');
-                return;
-            }
-
-            unifiedData.enrollments.push(enrollmentData);
-            
-            // Award XP to seller
-            const seller = unifiedData.users.find(u => u.name === enrollmentData.seller);
-            if (seller) {
-                seller.xp = (seller.xp || 0) + 100;
-                // Check for level up
-                const newLevel = Math.floor((seller.xp || 0) / 1000) + 1;
-                if (newLevel > (seller.level || 1)) {
-                    seller.level = newLevel;
-                    showMessage(`${seller.name} subiu para o nível ${newLevel}!`, 'success');
-                }
-            }
-
-            // Update mission progress
-            const salesMission = unifiedData.missions.find(m => m.type === 'vendas' && m.status === 'active');
-            if (salesMission) {
-                salesMission.current = unifiedData.enrollments.length;
-            }
-
-            showMessage('Matrícula registrada com sucesso!', 'success');
-            clearEnrollmentForm();
-            loadEnrollments();
-        }
-
-        function calculateCommission(type, total) {
-            let baseCommission = 50;
-            
-            switch(type) {
-                case 'Blackin':
-                    baseCommission += 25;
-                    break;
-                case 'Black':
-                    baseCommission += 50;
-                    break;
-            }
-            
-            return baseCommission;
-        }
-
-        function clearEnrollmentForm() {
-            document.getElementById('enrollmentName').value = '';
-            document.getElementById('enrollmentPhone').value = '';
-            document.getElementById('enrollmentCourse').value = '';
-            document.getElementById('enrollmentTotal').value = '';
-            document.getElementById('enrollmentEntry').value = '';
-            document.getElementById('enrollmentType').value = 'Convencional';
-            document.getElementById('enrollmentSeller').value = '';
-        }
-
-        // Modal functions
+        // Modal functions (placeholders)
         function openStudentModal() {
-            currentEditingId = null;
-            currentEditingType = 'student';
-            document.getElementById('studentModalTitle').textContent = 'Novo Aluno';
-            document.getElementById('studentForm').reset();
-            
-            // Populate course options
-            const courseSelect = document.getElementById('studentCourse');
-            courseSelect.innerHTML = '<option value="">Selecione um curso</option>';
-            unifiedData.courses.forEach(course => {
-                courseSelect.innerHTML += `<option value="${course.code}">${course.name}</option>`;
-            });
-            
-            openModal('studentModal');
+            showNotification('Funcionalidade em desenvolvimento', 'info');
         }
 
         function openCourseModal() {
-            currentEditingId = null;
-            currentEditingType = 'course';
-            document.getElementById('courseModalTitle').textContent = 'Novo Curso';
-            document.getElementById('courseForm').reset();
-            openModal('courseModal');
+            showNotification('Funcionalidade em desenvolvimento', 'info');
         }
-
-        function openTransactionModal() {
-            currentEditingId = null;
-            currentEditingType = 'transaction';
-            document.getElementById('transactionModalTitle').textContent = 'Nova Transação';
-            document.getElementById('transactionForm').reset();
-            document.getElementById('transactionDate').value = new Date().toISOString().split('T')[0];
-            openModal('transactionModal');
-        }
-
-        function openMissionModal() {
-            currentEditingId = null;
-            currentEditingType = 'mission';
-            document.getElementById('missionModalTitle').textContent = 'Nova Missão';
-            document.getElementById('missionForm').reset();
-            openModal('missionModal');
-        }
-
-        // Form submissions
-        document.getElementById('studentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const studentData = {
-                ra: document.getElementById('studentRA').value,
-                name: document.getElementById('studentName').value,
-                email: document.getElementById('studentEmail').value,
-                phone: document.getElementById('studentPhone').value,
-                course: document.getElementById('studentCourse').value,
-                tuition: parseFloat(document.getElementById('studentTuition').value),
-                enrollmentDate: document.getElementById('studentEnrollmentDate').value,
-                status: document.getElementById('studentStatus').value,
-                xp: 0,
-                level: 1,
-                coins: 0,
-                progress: 0,
-                createdBy: currentUser.name
-            };
-
-            if (currentEditingId) {
-                const index = unifiedData.students.findIndex(s => s.id === currentEditingId);
-                if (index > -1) {
-                    unifiedData.students[index] = { ...unifiedData.students[index], ...studentData };
-                    showMessage('Aluno atualizado com sucesso!', 'success');
-                }
-            } else {
-                const newId = Math.max(...unifiedData.students.map(s => s.id), 0) + 1;
-                unifiedData.students.push({ id: newId, ...studentData });
-                showMessage('Aluno cadastrado com sucesso!', 'success');
-            }
-
-            closeModal('studentModal');
-            loadStudents();
-            loadDashboard();
-        });
-
-        document.getElementById('courseForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const courseData = {
-                name: document.getElementById('courseName').value,
-                code: document.getElementById('courseCode').value,
-                description: document.getElementById('courseDescription').value,
-                hours: parseInt(document.getElementById('courseHours').value),
-                price: parseFloat(document.getElementById('coursePrice').value),
-                duration: parseInt(document.getElementById('courseDuration').value)
-            };
-
-            if (currentEditingId) {
-                const index = unifiedData.courses.findIndex(c => c.id === currentEditingId);
-                if (index > -1) {
-                    unifiedData.courses[index] = { ...unifiedData.courses[index], ...courseData };
-                    showMessage('Curso atualizado com sucesso!', 'success');
-                }
-            } else {
-                const newId = Math.max(...unifiedData.courses.map(c => c.id), 0) + 1;
-                unifiedData.courses.push({ id: newId, ...courseData });
-                showMessage('Curso cadastrado com sucesso!', 'success');
-            }
-
-            closeModal('courseModal');
-            loadCourses();
-        });
-
-        document.getElementById('transactionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const transactionData = {
-                date: document.getElementById('transactionDate').value,
-                type: document.getElementById('transactionType').value,
-                description: document.getElementById('transactionDescription').value,
-                value: parseFloat(document.getElementById('transactionValue').value),
-                status: document.getElementById('transactionStatus').value
-            };
-
-            if (currentEditingId) {
-                const index = unifiedData.transactions.findIndex(t => t.id === currentEditingId);
-                if (index > -1) {
-                    unifiedData.transactions[index] = { ...unifiedData.transactions[index], ...transactionData };
-                    showMessage('Transação atualizada com sucesso!', 'success');
-                }
-            } else {
-                const newId = Math.max(...unifiedData.transactions.map(t => t.id), 0) + 1;
-                unifiedData.transactions.push({ id: newId, ...transactionData });
-                showMessage('Transação cadastrada com sucesso!', 'success');
-            }
-
-            closeModal('transactionModal');
-            loadFinancial();
-        });
-
-        document.getElementById('missionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const missionData = {
-                title: document.getElementById('missionTitle').value,
-                description: document.getElementById('missionDescription').value,
-                type: document.getElementById('missionType').value,
-                target: parseInt(document.getElementById('missionTarget').value),
-                reward: parseInt(document.getElementById('missionReward').value),
-                deadline: document.getElementById('missionDeadline').value,
-                current: 0,
-                status: 'active',
-                createdBy: currentUser.name,
-                createdAt: new Date().toISOString()
-            };
-
-            if (currentEditingId) {
-                const index = unifiedData.missions.findIndex(m => m.id === currentEditingId);
-                if (index > -1) {
-                    unifiedData.missions[index] = { ...unifiedData.missions[index], ...missionData };
-                    showMessage('Missão atualizada com sucesso!', 'success');
-                }
-            } else {
-                const newId = Math.max(...unifiedData.missions.map(m => m.id), 0) + 1;
-                unifiedData.missions.push({ id: newId, ...missionData });
-                showMessage('Missão criada com sucesso!', 'success');
-            }
-
-            closeModal('missionModal');
-            loadGamification();
-        });
-
-        // Report functions
-        function generateCommissionsReport() {
-            const totalCommissions = unifiedData.enrollments.reduce((sum, e) => sum + (e.commission || 0), 0);
-            const commissionsBySeller = {};
-            
-            unifiedData.enrollments.forEach(enrollment => {
-                if (!commissionsBySeller[enrollment.seller]) {
-                    commissionsBySeller[enrollment.seller] = 0;
-                }
-                commissionsBySeller[enrollment.seller] += enrollment.commission || 0;
-            });
-
-            const reportHTML = `
-                <div class="card" style="margin-top: 20px;">
-                    <div class="card-header">
-                        <h3>💰 Relatório de Comissões</h3>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <div class="stat-card success" style="display: inline-block; margin-right: 20px;">
-                            <div class="stat-number">${formatCurrency(totalCommissions)}</div>
-                            <div class="stat-label">Total de Comissões</div>
-                        </div>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Vendedor</th>
-                                <th>Total de Comissões</th>
-                                <th>Número de Vendas</th>
-                                <th>Média por Venda</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${Object.entries(commissionsBySeller).map(([seller, total]) => {
-                                const sales = unifiedData.enrollments.filter(e => e.seller === seller).length;
-                                const average = sales > 0 ? total / sales : 0;
-                                return `
-                                    <tr>
-                                        <td>${seller}</td>
-                                        <td>${formatCurrency(total)}</td>
-                                        <td>${sales}</td>
-                                        <td>${formatCurrency(average)}</td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-
-            document.getElementById('reportResults').innerHTML = reportHTML;
-            showMessage('Relatório de comissões gerado!', 'success');
-        }
-
-        function generateConversionReport() {
-            const totalVisits = unifiedData.visits.length;
-            const conversions = unifiedData.enrollments.length;
-            const conversionRate = totalVisits > 0 ? (conversions / totalVisits) * 100 : 0;
-            const conversionsByCourse = {};
-            
-            unifiedData.enrollments.forEach(enrollment => {
-                if (!conversionsByCourse[enrollment.course]) {
-                    conversionsByCourse[enrollment.course] = 0;
-                }
-                conversionsByCourse[enrollment.course]++;
-            });
-
-            const reportHTML = `
-                <div class="card" style="margin-top: 20px;">
-                    <div class="card-header">
-                        <h3>📈 Relatório de Conversão</h3>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                        <div class="stat-card info">
-                            <div class="stat-number">${totalVisits}</div>
-                            <div class="stat-label">Total de Visitas</div>
-                        </div>
-                        <div class="stat-card success">
-                            <div class="stat-number">${conversions}</div>
-                            <div class="stat-label">Conversões</div>
-                        </div>
-                        <div class="stat-card warning">
-                            <div class="stat-number">${conversionRate.toFixed(1)}%</div>
-                            <div class="stat-label">Taxa de Conversão</div>
-                        </div>
-                    </div>
-                    <h4>Conversões por Curso:</h4>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Curso</th>
-                                <th>Conversões</th>
-                                <th>Porcentagem</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${Object.entries(conversionsByCourse).map(([course, count]) => {
-                                const percentage = conversions > 0 ? (count / conversions) * 100 : 0;
-                                return `
-                                    <tr>
-                                        <td>${getCourseNameByCode(course)}</td>
-                                        <td>${count}</td>
-                                        <td>${percentage.toFixed(1)}%</td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-
-            document.getElementById('reportResults').innerHTML = reportHTML;
-            showMessage('Relatório de conversão gerado!', 'success');
-        }
-
-        function generateFinancialReport() {
-            const totalRevenue = unifiedData.transactions
-                .filter(t => t.type === 'receita' && t.status === 'pago')
-                .reduce((sum, t) => sum + t.value, 0);
-            
-            const totalExpenses = unifiedData.transactions
-                .filter(t => t.type === 'despesa' && t.status === 'pago')
-                .reduce((sum, t) => sum + t.value, 0);
-            
-            const netProfit = totalRevenue - totalExpenses;
-
-            const reportHTML = `
-                <div class="card" style="margin-top: 20px;">
-                    <div class="card-header">
-                        <h3>💳 Relatório Financeiro</h3>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                        <div class="stat-card success">
-                            <div class="stat-number">${formatCurrency(totalRevenue)}</div>
-                            <div class="stat-label">Receitas</div>
-                        </div>
-                        <div class="stat-card danger">
-                            <div class="stat-number">${formatCurrency(totalExpenses)}</div>
-                            <div class="stat-label">Despesas</div>
-                        </div>
-                        <div class="stat-card ${netProfit >= 0 ? 'success' : 'danger'}">
-                            <div class="stat-number">${formatCurrency(netProfit)}</div>
-                            <div class="stat-label">Lucro Líquido</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('reportResults').innerHTML = reportHTML;
-            showMessage('Relatório financeiro gerado!', 'success');
-        }
-
-        function generateStudentReport() {
-            const activeStudents = unifiedData.students.filter(s => s.status === 'ativo').length;
-            const totalStudents = unifiedData.students.length;
-            const averageXP = totalStudents > 0 ? 
-                unifiedData.students.reduce((sum, s) => sum + (s.xp || 0), 0) / totalStudents : 0;
-
-            const reportHTML = `
-                <div class="card" style="margin-top: 20px;">
-                    <div class="card-header">
-                        <h3>👥 Relatório de Alunos</h3>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px;">
-                        <div class="stat-card">
-                            <div class="stat-number">${totalStudents}</div>
-                            <div class="stat-label">Total de Alunos</div>
-                        </div>
-                        <div class="stat-card success">
-                            <div class="stat-number">${activeStudents}</div>
-                            <div class="stat-label">Alunos Ativos</div>
-                        </div>
-                        <div class="stat-card gold">
-                            <div class="stat-number">${Math.round(averageXP)}</div>
-                            <div class="stat-label">XP Médio</div>
-                        </div>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>RA</th>
-                                <th>Curso</th>
-                                <th>Status</th>
-                                <th>XP</th>
-                                <th>Nível</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${unifiedData.students.map(student => `
-                                <tr>
-                                    <td>${student.name}</td>
-                                    <td>${student.ra}</td>
-                                    <td>${getCourseNameByCode(student.course)}</td>
-                                    <td><span class="badge ${student.status === 'ativo' ? 'success' : 'danger'}">${student.status}</span></td>
-                                    <td>${student.xp || 0}</td>
-                                    <td>${student.level || 1}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-
-            document.getElementById('reportResults').innerHTML = reportHTML;
-            showMessage('Relatório de alunos gerado!', 'success');
-        }
-
-        // Utility functions
-        function logout() {
-            currentUser = null;
-            currentEditingId = null;
-            currentEditingType = null;
-            document.getElementById('mainApp').style.display = 'none';
-            document.getElementById('loginScreen').style.display = 'flex';
-            showMessage('Logout realizado com sucesso!', 'info');
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            showMessage('Tema alterado!', 'info');
-        }
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-            }
-        });
-
-        // Initialize app
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Sistema GameCreators Unificado iniciado!');
-        });
     </script>
 </body>
 </html>
