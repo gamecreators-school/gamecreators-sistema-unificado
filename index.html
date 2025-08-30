@@ -144,6 +144,53 @@
             margin: 2px;
         }
 
+        .btn-info {
+            background: var(--info-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+        }
+
+        .btn-warning {
+            background: var(--warning-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(237, 137, 54, 0.3);
+        }
+
+        .btn-danger {
+            background: var(--danger-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-control {
+            padding: 10px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: var(--transition);
+            background: white;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .financial-tab-content {
+            display: none;
+        }
+
+        .financial-tab-content.active {
+            display: block;
+        }
+
         /* Main System Styles */
         .main-container {
             background: white;
@@ -181,6 +228,11 @@
             font-size: 13px;
             font-weight: 600;
             transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
         .nav-tabs {
@@ -286,6 +338,10 @@
             font-size: 14px;
         }
 
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
         .notification {
             padding: 16px 20px;
             border-radius: 12px;
@@ -302,16 +358,25 @@
         .notification.success {
             background: linear-gradient(135deg, rgba(199, 246, 213, 0.95), rgba(240, 253, 244, 0.95));
             color: #22543d;
+            border-left: 4px solid #38a169;
         }
 
         .notification.error {
             background: linear-gradient(135deg, rgba(254, 215, 215, 0.95), rgba(255, 245, 245, 0.95));
             color: #742a2a;
+            border-left: 4px solid #e53e3e;
         }
 
         .notification.warning {
             background: linear-gradient(135deg, rgba(254, 245, 231, 0.95), rgba(255, 251, 235, 0.95));
             color: #744210;
+            border-left: 4px solid #ed8936;
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, rgba(219, 234, 254, 0.95), rgba(239, 246, 255, 0.95));
+            color: #1e3a8a;
+            border-left: 4px solid #3182ce;
         }
 
         @keyframes slideIn {
@@ -322,6 +387,60 @@
         .hidden {
             display: none !important;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: var(--shadow-lg);
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close:hover {
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active { background: #38a169; color: white; }
+        .status-inactive { background: #718096; color: white; }
+        .status-paid { background: #38a169; color: white; }
+        .status-pending { background: #ed8936; color: white; }
+        .status-overdue { background: #e53e3e; color: white; }
+        .status-cancelled { background: #718096; color: white; }
 
         @media (max-width: 768px) {
             .dashboard-grid {
@@ -338,6 +457,18 @@
             .tab-button {
                 min-width: 140px;
                 padding: 16px 20px;
+            }
+
+            .page-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
             }
         }
     </style>
@@ -386,11 +517,11 @@
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
-            <button class="tab-button active" onclick="switchTab('dashboard')">Dashboard</button>
-            <button class="tab-button" onclick="switchTab('students')">Alunos</button>
-            <button class="tab-button" onclick="switchTab('courses')">Cursos</button>
-            <button class="tab-button" onclick="switchTab('financial')">Financeiro</button>
-            <button class="tab-button" onclick="switchTab('reports')">Relatórios</button>
+            <button class="tab-button active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+            <button class="tab-button" onclick="switchTab('students')">👥 Alunos</button>
+            <button class="tab-button" onclick="switchTab('courses')">📚 Cursos</button>
+            <button class="tab-button" onclick="switchTab('financial')">💰 Financeiro</button>
+            <button class="tab-button" onclick="switchTab('reports')">📈 Relatórios</button>
         </div>
 
         <!-- Dashboard Tab -->
@@ -419,8 +550,10 @@
         <div id="students" class="tab-content">
             <div style="padding: 30px;">
                 <div class="stat-card">
-                    <h3>👥 Gerenciar Alunos</h3>
-                    <button class="btn btn-success" onclick="openStudentModal()">➕ Novo Aluno</button>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>👥 Gerenciar Alunos</h3>
+                        <button class="btn btn-success" onclick="openStudentModal()">➕ Novo Aluno</button>
+                    </div>
                     
                     <table class="data-table">
                         <thead>
@@ -438,11 +571,22 @@
                                 <td>João Silva</td>
                                 <td>joao@email.com</td>
                                 <td>Unity Game Development</td>
-                                <td><span style="background: #38a169; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px;">Ativo</span></td>
+                                <td><span class="status-badge status-active">Ativo</span></td>
                                 <td>75%</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                    <button class="btn btn-primary btn-sm" onclick="editStudent(1)">✏️ Editar</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteStudent(1)">🗑️ Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Maria Santos</td>
+                                <td>maria@email.com</td>
+                                <td>Game Design Fundamentals</td>
+                                <td><span class="status-badge status-active">Ativo</span></td>
+                                <td>92%</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" onclick="editStudent(2)">✏️ Editar</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteStudent(2)">🗑️ Excluir</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -455,8 +599,10 @@
         <div id="courses" class="tab-content">
             <div style="padding: 30px;">
                 <div class="stat-card">
-                    <h3>📚 Gerenciar Cursos</h3>
-                    <button class="btn btn-success" onclick="openCourseModal()">➕ Novo Curso</button>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3>📚 Gerenciar Cursos</h3>
+                        <button class="btn btn-success" onclick="openCourseModal()">➕ Novo Curso</button>
+                    </div>
                     
                     <table class="data-table">
                         <thead>
@@ -466,6 +612,7 @@
                                 <th>Carga Horária</th>
                                 <th>Valor</th>
                                 <th>Alunos</th>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -476,9 +623,22 @@
                                 <td>120h</td>
                                 <td>R$ 1,200.00</td>
                                 <td>45</td>
+                                <td><span class="status-badge status-active">Ativo</span></td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm">Editar</button>
-                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                    <button class="btn btn-primary btn-sm" onclick="editCourse(1)">✏️ Editar</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteCourse(1)">🗑️ Excluir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Game Design Fundamentals</td>
+                                <td>GDF-2025</td>
+                                <td>80h</td>
+                                <td>R$ 899.00</td>
+                                <td>32</td>
+                                <td><span class="status-badge status-active">Ativo</span></td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm" onclick="editCourse(2)">✏️ Editar</button>
+                                    <button class="btn btn-danger btn-sm" onclick="deleteCourse(2)">🗑️ Excluir</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -490,206 +650,111 @@
         <!-- Financial Tab -->
         <div id="financial" class="tab-content">
             <div style="padding: 30px;">
+                <!-- Indicadores Financeiros -->
                 <div class="dashboard-grid">
                     <div class="stat-card">
-                        <div class="stat-value">R$ 45,200</div>
-                        <div class="stat-label">💰 Receita do Mês</div>
+                        <div class="stat-value" id="monthlyRevenue2">R$ 45,200</div>
+                        <div class="stat-label">💰 Receita Mensal</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">R$ 3,800</div>
-                        <div class="stat-label">⏰ Pendências</div>
+                        <div class="stat-value" id="pendingPayments">R$ 3,800</div>
+                        <div class="stat-label">⏰ Pagamentos Pendentes</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">R$ 1,200</div>
-                        <div class="stat-label">⚠️ Inadimplência</div>
+                        <div class="stat-value" id="overduePayments">R$ 1,200</div>
+                        <div class="stat-label">⚠️ Pagamentos Atrasados</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="monthlyExpenses">R$ 8,500</div>
+                        <div class="stat-label">💸 Despesas Mensais</div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Reports Tab -->
-        <div id="reports" class="tab-content">
-            <div style="padding: 30px;">
-                <div class="stat-card">
-                    <h3>📊 Relatórios do Sistema</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
-                        <button class="btn btn-primary">📈 Relatório de Vendas</button>
-                        <button class="btn btn-success">👥 Relatório de Alunos</button>
-                        <button class="btn btn-warning">💰 Relatório Financeiro</button>
-                        <button class="btn btn-info">📚 Relatório de Cursos</button>
-                    </div>
+                <!-- Sub-tabs do Financeiro -->
+                <div class="nav-tabs" style="margin-top: 30px;">
+                    <button class="tab-button active" onclick="switchFinancialTab('transactions')">💰 Transações</button>
+                    <button class="tab-button" onclick="switchFinancialTab('monthly')">📅 Mensalidades</button>
+                    <button class="tab-button" onclick="switchFinancialTab('reports')">📊 Relatórios</button>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        // Global variables
-        let currentUser = null;
-        let gameData = {
-            users: {
-                'admin': {
-                    username: 'admin',
-                    password: 'admin123',
-                    name: 'Administrador',
-                    role: 'admin',
-                    xp: 5000,
-                    level: 10
-                },
-                'user': {
-                    username: 'user',
-                    password: 'user123',
-                    name: 'Usuário Demo',
-                    role: 'user',
-                    xp: 1500,
-                    level: 3
-                }
-            },
-            students: [],
-            courses: [],
-            transactions: []
-        };
-
-        // Initialize system
-        document.addEventListener('DOMContentLoaded', function() {
-            loadGameData();
-            setupEventListeners();
-        });
-
-        function loadGameData() {
-            try {
-                const saved = localStorage.getItem('gameCreatorsData');
-                if (saved) {
-                    gameData = { ...gameData, ...JSON.parse(saved) };
-                }
-            } catch (error) {
-                console.error('Error loading data:', error);
-            }
-        }
-
-        function saveGameData() {
-            try {
-                localStorage.setItem('gameCreatorsData', JSON.stringify(gameData));
-            } catch (error) {
-                console.error('Error saving data:', error);
-            }
-        }
-
-        function setupEventListeners() {
-            // Enter key login
-            document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    login();
-                }
-            });
-        }
-
-        // Login functions
-        function login() {
-            const username = document.getElementById('loginUsername').value.trim();
-            const password = document.getElementById('loginPassword').value.trim();
-
-            if (!username || !password) {
-                showNotification('Preencha usuário e senha', 'warning');
-                return;
-            }
-
-            const user = gameData.users[username];
-            if (!user || user.password !== password) {
-                showNotification('Usuário ou senha incorretos', 'error');
-                return;
-            }
-
-            performLogin(user);
-        }
-
-        function loginDemo(type) {
-            const user = gameData.users[type];
-            if (user) {
-                performLogin(user);
-            }
-        }
-
-        function performLogin(user) {
-            currentUser = user;
-            document.getElementById('userName').textContent = user.name;
-            
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('mainSystem').style.display = 'block';
-            
-            showNotification(`Bem-vindo, ${user.name}!`, 'success');
-            updateDashboard();
-        }
-
-        function logout() {
-            currentUser = null;
-            document.getElementById('loginScreen').style.display = 'flex';
-            document.getElementById('mainSystem').style.display = 'none';
-            
-            // Clear form
-            document.getElementById('loginUsername').value = '';
-            document.getElementById('loginPassword').value = '';
-            
-            showNotification('Logout realizado com sucesso', 'info');
-        }
-
-        // Tab navigation
-        function switchTab(tabId) {
-            // Remove active from all tabs
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            // Add active to selected tab
-            document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        // Dashboard updates
-        function updateDashboard() {
-            // Update stats with real data
-            document.getElementById('totalStudents').textContent = gameData.students.length || '150';
-            document.getElementById('activeCourses').textContent = gameData.courses.length || '12';
-            
-            // Calculate monthly revenue
-            const monthlyRevenue = gameData.transactions
-                ?.filter(t => t.type === 'income')
-                ?.reduce((sum, t) => sum + (t.amount || 0), 0) || 45200;
-            
-            document.getElementById('monthlyRevenue').textContent = `R$ ${monthlyRevenue.toLocaleString('pt-BR')}`;
-        }
-
-        // Utility functions
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 4000);
-        }
-
-        function generateId() {
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
-        }
-
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('pt-BR');
-        }
-
-        // Modal functions (placeholders)
-        function openStudentModal() {
-            showNotification('Funcionalidade em desenvolvimento', 'info');
-        }
-
-        function openCourseModal() {
-            showNotification('Funcionalidade em desenvolvimento', 'info');
-        }
-    </script>
-</body>
-</html>
+                <!-- Transações Financeiras -->
+                <div id="transactions" class="financial-tab-content active">
+                    <div class="stat-card" style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3>💰 Transações Financeiras</h3>
+                            <button class="btn btn-success" onclick="openTransactionModal()">➕ Nova Transação</button>
+                        </div>
+                        
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
+                            <input type="date" id="filterDateFrom" class="form-control" style="flex: 1; min-width: 150px;">
+                            <input type="date" id="filterDateTo" class="form-control" style="flex: 1; min-width: 150px;">
+                            <select id="filterType" class="form-control" style="flex: 1; min-width: 120px;">
+                                <option value="">Todos os tipos</option>
+                                <option value="receita">Receita</option>
+                                <option value="despesa">Despesa</option>
+                            </select>
+                            <select id="filterStatus" class="form-control" style="flex: 1; min-width: 120px;">
+                                <option value="">Todos os status</option>
+                                <option value="pago">Pago</option>
+                                <option value="pendente">Pendente</option>
+                            </select>
+                            <button class="btn btn-primary" onclick="filterTransactions()">🔍 Filtrar</button>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Descrição</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsTable">
+                                <tr>
+                                    <td>01/08/2025</td>
+                                    <td><span class="status-badge" style="background: #38a169;">Receita</span></td>
+                                    <td>Mensalidade João Silva - Agosto</td>
+                                    <td>R$ 299,00</td>
+                                    <td><span class="status-badge status-paid">Pago</span></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm">👁️ Ver</button>
+                                        <button class="btn btn-primary btn-sm">✏️ Editar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>01/08/2025</td>
+                                    <td><span class="status-badge" style="background: #38a169;">Receita</span></td>
+                                    <td>Mensalidade Carlos Oliveira - Agosto</td>
+                                    <td>R$ 349,00</td>
+                                    <td><span class="status-badge status-paid">Pago</span></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm">👁️ Ver</button>
+                                        <button class="btn btn-primary btn-sm">✏️ Editar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>01/08/2025</td>
+                                    <td><span class="status-badge" style="background: #38a169;">Receita</span></td>
+                                    <td>Mensalidade Maria Santos - Agosto</td>
+                                    <td>R$ 199,00</td>
+                                    <td><span class="status-badge status-pending">Pendente</span></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm">👁️ Ver</button>
+                                        <button class="btn btn-primary btn-sm">✏️ Editar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>15/07/2025</td>
+                                    <td><span class="status-badge" style="background: #e53e3e;">Despesa</span></td>
+                                    <td>Licença Unity Pro</td>
+                                    <td>R$ 1.500,00</td>
+                                    <td><span class="status-badge status-paid">Pago</span></td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm">👁️ Ver</button>
+                                        <button class="btn btn-primary btn-sm">✏️ Editar</button>
+                                    </td>
+                                </tr>
+                                <tr>
